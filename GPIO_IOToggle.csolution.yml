@@ -1,0 +1,37 @@
+# A solution is a collection of related projects that share same base configuration.
+solution:
+  created-for: CMSIS-Toolbox@2.14.1
+
+  # Selected compiler
+  compiler: GCC
+
+  # List the packs that define the device and/or board.
+  packs:
+    - pack: Keil::STM32U5xx_DFP
+    - pack: Keil::B-U585I-IOT02A_BSP
+
+  # List different hardware targets that are used to deploy the solution.
+  target-types:
+    - type: B-U585I-IOT02A
+      device: STM32U585AIIx
+      board: B-U585I-IOT02A:Rev.C
+      target-set:
+        - set:
+          images:
+            - project-context: GPIO_IOToggle
+          debugger:
+            name: ST-Link@pyOCD
+            clock: 4000000
+            protocol: swd
+
+  # List related projects.
+  projects:
+    - cmake:
+        source: ./
+        project-id: GPIO_IOToggle
+        configure:
+          - -DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake
+          - -DCMAKE_BUILD_TYPE=Debug
+        images:
+          - image: GPIO_IOToggle.elf
+            type: elf

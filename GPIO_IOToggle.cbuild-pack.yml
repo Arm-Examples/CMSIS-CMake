@@ -1,0 +1,8 @@
+cbuild-pack:
+  resolved-packs:
+    - resolved-pack: Keil::B-U585I-IOT02A_BSP@3.0.0
+      selected-by-pack:
+        - Keil::B-U585I-IOT02A_BSP
+    - resolved-pack: Keil::STM32U5xx_DFP@3.2.0
+      selected-by-pack:
+        - Keil::STM32U5xx_DFP

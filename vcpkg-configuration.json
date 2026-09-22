@@ -1,0 +1,14 @@
+{
+    "registries": [
+        {
+            "name": "arm",
+            "kind": "artifact",
+            "location": "https://artifacts.tools.arm.com/vcpkg-registry"
+        }
+    ],
+    "requires": {
+        "arm:compilers/arm/arm-none-eabi-gcc": "15.3.1",
+        "arm:tools/kitware/cmake": "4.3.3",
+        "arm:tools/ninja-build/ninja": "1.13.2"
+    }
+}
