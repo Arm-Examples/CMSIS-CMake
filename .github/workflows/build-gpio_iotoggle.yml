@@ -22,21 +22,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout repo
+        uses: actions/checkout@v7.0.1
 
-      - name: Activate vcpkg environment
-        uses: ARM-software/cmsis-actions/vcpkg@v1
-        with:
-          config: vcpkg-configuration.json
-          cache: cmsis-cmake
+      - name: Installl tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1.3
 
-      # The default Arm license setup is for evaluation only.
-      - name: Activate Arm tool license
-        uses: ARM-software/cmsis-actions/armlm@v1
+      - name: Activate Arm tools license
+        uses: ARM-software/cmsis-actions/armlm@v1.3
 
       - name: Build B-U585I-IOT02A
         working-directory: "."
-        run: cbuild "GPIO_IOToggle.csolution.yml" --active "B-U585I-IOT02A" --packs
+        run: cbuild GPIO_IOToggle.csolution.yml --active B-U585I-IOT02A --packs
 
       - name: Upload build artifacts
         if: always()
