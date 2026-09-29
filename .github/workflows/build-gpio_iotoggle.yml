@@ -1,0 +1,41 @@
+# generated with AI
+# Adapted by the create-csolution-github-action skill.
+
+name: Build GPIO_IOToggle
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build B-U585I-IOT02A
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7.0.1
+
+      - name: Installl tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1.3
+
+      - name: Build B-U585I-IOT02A
+        working-directory: "."
+        run: cbuild GPIO_IOToggle.csolution.yml --active B-U585I-IOT02A --packs
+
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: gpio-iotoggle-b-u585i-iot02a
+          path: ./out
+          if-no-files-found: warn
