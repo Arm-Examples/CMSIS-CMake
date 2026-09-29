@@ -1,8 +1,16 @@
 # CMSIS-CMake
 
+[<img src="./images/preview.png" alt="Overview of CMake capabilities in Keil Studio" width="320" height="180" align="left">](https://armkeil.blob.core.windows.net/developer/Files/videos/KeilStudio/CMSIS-CMake.mp4 "Overview of CMake capabilities in Keil Studio")
+
 This CMake-based example project runs on a
 [B-U585I-IOT02A](https://www.keil.arm.com/boards/stmicroelectronics-b-u585i-iot02a-revc-c3bc599/projects/) development
 board from STMicroelectronics. The example code was generated with STM32CubeMX.
+
+The [Arm CMSIS Debugger](https://marketplace.visualstudio.com/items?itemName=Arm.vscode-cmsis-debugger) provides views for device peripherals, including the interrupt system. It is used to download and run the application on target hardware.
+
+pyOCD supports runtime behavior analysis in CI workflows using RTT and SystemView.
+
+Overall, CMake development is simplified by managing different build configurations, using an intuitive project tree, supporting multi-core configurations, and providing smart editor features such as code completion.
 
 ## Quick start
 
